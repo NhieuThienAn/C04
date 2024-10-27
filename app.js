@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { createPost, getAllPosts, getPostById, updatePostById, deletePostById, searchPosts } = require('./Controllers/PostController');
 const { register, login, getUserById, updateUserById } = require('./Controllers/UserController');
-
+const getAllInformations = require('./Controllers/InformationController');
 const app = express();
 const PORT = 3000;
 
@@ -34,6 +34,9 @@ app.post('/api/register', register);//dc
 app.post('/api/login', login); //dc
 app.get('/api/users/:id', getUserById); //dc
 app.put('/api/users/:id', updateUserById); //dc
+
+//celebrity information
+app.get('/api/information', getAllInformations.getAllInformations); //dc
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
